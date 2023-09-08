@@ -33,6 +33,9 @@ jobs:
         uses: pypa/cibuildwheel@v2.15.0
         env:
           CIBW_ARCHS_MACOS: 'x86_64 arm64'
+          CIBW_ENVIRONMENT_MACOS: >
+            CPATH=/opt/homebrew/include:/opt/homebrew/include/eigen3
+            LD_LIBRARY_PATH=/opt/homebrew/lib
       - uses: actions/upload-artifact@v3
         with:
           path: ./wheelhouse/*.whl
